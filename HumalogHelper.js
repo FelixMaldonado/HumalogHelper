@@ -1,3 +1,4 @@
+// --------------------------------------------------------------------------------Button Functions-----------------------------------------------------------------------------------------------------------
 function startButton(){
     $('.start').on('click', event=>{
         event.preventDefault();
@@ -5,6 +6,20 @@ function startButton(){
     })
 }
 
+function confirmButton(){
+    $('.mainUiButton').on('click', event=>{
+        event.preventDefault();
+        let food = 'q=' + $('.foodSearchInput').val();
+        let ratio = $('.ratioInput').val();
+        let bloodSugar = $('.bloodSugarInput').val();
+        console.log(food);
+        console.log(ratio);
+        console.log(bloodSugar);
+        getUSDA();
+    })
+}
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------Main UI Screen------------------------------------------------------------------------------------------------------------
 function showMainUi(){
     $('.welcomeScreen').remove();
     $('.displayMainUi').append(`<Header class="mainUiHeader">
@@ -28,6 +43,13 @@ function showMainUi(){
                                             <button class="mainUiButton" type="text" value="ConfirmUserInput">Confirm User Input</button>
                                         </div>
                                     </div>`);
+                                    $(confirmButton);
+}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------Results Screen--------------------------------------------------------------------------------------------------------------------------
+
+function getUSDA(){
+    fetch(`https://api.nal.usda.gov/ndb/search/?format=json&${food}&sort=n&max=25&offset=0&api_key=DEMO_KEY`)
 }
 
 $(startButton);
