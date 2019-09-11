@@ -1,0 +1,38 @@
+/* --------------------------------------------------------Welcome Screen-------------------------------------------------------------- */
+.welcomeScreenHeader{
+    display:flex;
+    justify-content: center;
+}
+
+.title{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.startContainer, .mainUiButtonContainer{
+    display:flex; 
+    justify-content: center;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------Main UI Screen-----------------------------------------------------------------*/
+
+.mainUiTitle{
+    display:flex;
+    justify-content: center;
+}
+
+.foodImg, .ratioImg, .bloodSugarImg{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.foodSearchInput, .ratioInput, .bloodSugarInput{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
