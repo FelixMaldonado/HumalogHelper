@@ -10,6 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Information for "Your Search"</h1>
+    <h1>Information for ${newresponseJson.report.foods[0].name}</h1>
+    <p class="carbs">Carbs: ${newresponseJson.report.foods[0].nutrients[3].value}${newresponseJson.report.foods[0].nutrients[3].unit}</p>
 </body>
 </html>
