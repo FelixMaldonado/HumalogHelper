@@ -1,13 +1,25 @@
+body{
+    background: rgb(224, 220, 216);
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 /* --------------------------------------------------------Welcome Screen-------------------------------------------------------------- */
 .welcomeScreenHeader{
     display:flex;
     justify-content: center;
 }
 
-.title{
+.title, .btmTitle{
     display:flex;
     justify-content: center;
     text-align: center;
+    font-family: 'Play', sans-serif;
+    font-size: 53px;
+}
+
+.btmTitle{
+    padding-bottom: 35px;
 }
 
 .startContainer, .mainUiButtonContainer{
@@ -15,12 +27,37 @@
     justify-content: center;
 }
 
+.startContainer{
+    height: 50px;
+    width: 100%;
+}
+
+.breakTitle{
+    line-height: 5px;
+}
+
+.mainLogo{
+    margin-bottom: 47px;
+    margin-top: 20px;
+    border: 4px solid #160CE8;
+}
+
+.start{
+    width: 155px;
+    font-size: 31px;
+    background: black;
+    color: white;
+    border: 4px solid #160CE8;
+}
+
 /*----------------------------------------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------Main UI Screen-----------------------------------------------------------------*/
 
 .mainUiTitle{
+    font-family: 'Play', sans-serif;
     display:flex;
     justify-content: center;
+    font-size: 26px;
 }
 
 .foodImg, .ratioImg, .bloodSugarImg{
@@ -31,16 +68,423 @@
     margin-right: auto;
 }
 
+.ratioImg, .bloodSugarImg{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.ratioImg{
+    border: 3px solid #0C75E8;
+}
+
+.bloodSugarImg{
+    border: 3px solid #0DC1FF
+}
+
 .foodSearchInput, .ratioInput, .bloodSugarInput{
     display: flex;
+    margin-top: 5px;
+    margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
+    height: 17px;
+    width: 216px;
+}
+
+.inputLabels{
+    display: flex;
+    justify-content: center;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 12px;
+}
+
+.mainUiButton{
+    margin-top: 23px;
+    height: 32px;
+    width: 155px;
+    font-size: 14px;
+    background: black;
+    color: white;
+    border: 4px solid #160CE8;
 }
 /*------------------------------------------------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------------Search Results Screen---------------------------------------------------------------*/
+.searchResultsTitle{
+    font-family: 'Play', sans-serif;
+    display:flex;
+    justify-content: center;
+    font-size: 14px;
+}
 
-.foodName{
+.searchResultsbody{
+    font-family: 'Play', sans-serif;
+    display:flex;
+    justify-content: center;
+    font-size: 14px;
+}
+
+
+.foodName, .category{
     list-style: none;
     display: inline;
+    font-family: 'Rajdhani', sans-serif;
+}
+ .usdaApi{
+    border-style: solid;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #160CE8, #0DC1FF) 1 20%;
+    padding: 5px;
+    margin-bottom:8px;
+    font-size: 12px;
+ }
+
+ .searchResults{
+     padding-left: 0px;
+ }
+
+ .usdaApiLabel{
+     font-weight: bold;
+ }
+
+ .resultsButton{
+     display: block;
+     margin-right: auto;
+     margin-left: auto;
+     width: 125px;
+     background: #5A0DFF;
+     border-radius: 40%;
+     color: rgb(241, 226, 205);
+     font-size: 12px;
+ }
+/*----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------Nutritional/Recipe Screen-----------------------------------------*/
+ .nutritionTitle{
+    font-family: 'Play', sans-serif;
+    font-size: 21px;
+ }
+
+ .nutritionUl{
+    font-family: 'Rajdhani', sans-serif;
+    padding: 15px;
+    list-style: none;
+    border-style: solid;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #160CE8, #0DC1FF) 1 20%;
+    text-align: center;
+ }
+
+ .nutritionLi{
+    margin-bottom: 5px;
+    font-size: 18px; 
+ }
+
+ .measurement, .carbs, .sugars{
+     font-weight: bold;
+ }
+
+ .recBS{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: bolder;
+    text-align: center;
+ }
+
+ .recipeIdeasTitle{
+    font-family: 'Play', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+ }
+
+ hr{
+     background-image:  linear-gradient(to right, #5A0DFF, #0DC1FF);
+     height: 3px;
+ }
+
+ .recipeUl{
+     padding: 0px;
+     list-style: none;
+ }
+
+ .recipeImg{
+     height: 120px;
+     width: 148px;
+     border-image: linear-gradient(to right, #160CE8, #0DC1FF) 1 20%;
+ }
+
+ .recipeImgLi{
+     display:flex;
+     justify-content: center;
+     background-image: linear-gradient(45deg, #0C75E8, transparent);
+     height: 120px;
+ }
+
+ .recipeTitle{
+    /* font-family: 'Rajdhani', sans-serif; */
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: 600;
+ }
+
+ .recipeAltName, .recipeLinkLi{
+     text-align: center;
+     margin-top: 5px;
+ }
+
+ a:link{
+     color: #160CE8;
+ }
+
+ a:hover{
+     color: #0DC1FF;
+ }
+
+ a:visited{
+     color: rgb(51, 20, 119);
+ }
+
+ .reDoSearchButtonContain{
+     display: flex;
+     justify-content: center;
+ }
+
+ .reDoSearchButton{
+    margin-bottom: 14px;
+    height: 32px;
+    width: 155px;
+    font-size: 14px;
+    background: black;
+    color: white;
+    border: 4px solid #160CE8;
+ }
+
+ .BSContainer{
+     text-align:center;
+ }
+
+
+/*----------------------------------------------------Media Queries----------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 425px){
+    /*-----------------------------------Nutritional/Recipe Screen min width 425px-------------------------------------*/
+    .searchResultsTitle{
+        font-size: 19px;
+    }
+
+    .searchResultsbody{
+        font-size: 19px;
+    }
+
+    .usdaApi{
+        font-size: 19px;
+    }
+
+    .resultsButton{
+        width: 195px;
+        font-size: 20px;
+    }
+} 
+/*---------------------------------------------------------------------------------------------------------------*/
+
+
+@media only screen and (min-width: 768px){
+ /*---------------------------------------------------Welcome Screen 768px-------------------------------------------*/  
+    .mainLogo{
+        height:164px;
+        width: 226px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .title, .btmTitle{
+        font-size: 68px;
+    }
+
+    .title{
+        margin-top: 0px;
+    }
+
+    .startContainer{
+        height: 65px;
+    }
+
+    .start{
+        width: 220px;
+        font-size: 39px;
+    }
+
+/*------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------Main UI Screen min 768px-------------------------------------*/
+    .mainUiTitle{
+        font-size: 56px;
+        margin-bottom: 10px;
+    }
+
+    .foodImg, .ratioImg, .bloodSugarImg{
+        width: 140px;
+        height: 130px;
+    }
+    .inputLabels{
+        font-size:23px;
+    }
+    .foodSearchInput, .ratioInput, .bloodSugarInput{
+        font-size: 16px;
+        height: 25px;
+        width: 325px;
+    }
+
+    .mainUiButton{
+        height: 41px;
+        width: 192px;
+        font-size: 18px;
+    }
+/*----------------------------------------------Search Results Screen min width 768px--------------------------*/
+    .resultsButton{
+        width: 240px;
+        font-size: 23px;
+    }
+
+    .searchResultsTitle{
+        font-size: 37px;
+    }
+
+    .searchResultsbody{
+        font-size: 37px;
+    }
+/*------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------Nutrition/Recipe Screen min width 768px----------------------------*/
+    .nutritionTitle{
+        font-size: 25px;
+    }
+
+    .nutritionLi{
+        font-size: 25px;
+    }
+
+    .recBS{
+        font-size: 25px;
+    }
+
+    .recipeIdeasTitle{
+        font-size: 30px;
+    }
+
+    .reDoSearchButton{
+        height: 45px;
+        width: 205px;
+        font-size: 18px;
+    }
+
+
+}
+/*--------------------------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 1024px){
+/*----------------------------------------------Nutrition/Reciper min-width 1024-------------------------*/
+    .recipeIdeasTitle{
+        font-size: 40px;
+    }
+
+    .recipeTitle{
+        font-size: 20px;
+    }
+
+    .recipeImgLi{
+        height: 150px
+    }
+
+    .recipeAltName{
+        font-size: 17px;
+    }
+
+    .recipeImg{
+        height: 150px;
+        width: 180px;
+    }
+
+    body{
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+/*--------------------------------------------------------------------------------------------------------------*/
+
+
+@media only screen and (min-width: 1440px){
+/*-------------------------------------------------Welcome Screen Min Width 1440px--------------------------------*/   
+    .mainLogo{
+        margin-bottom: 40px;
+    }
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------Results Screen Min Width 1440px-------------------------------------*/
+    .searchResultsTitle{
+        font-size: 65px;
+    }
+
+    .searchResultsbody{
+        font-size: 58px;
+    }
+
+    .usdaApi{
+        font-size: 35px;
+    }
+
+    .resultsButton{
+        font-size: 30px;
+        width: 300px;
+    }
+
+}
+
+@media only screen and (min-width: 2560px){
+ /*---------------------------------------Welcome Screen Min Width 2560px---------------------------------------------*/   
+    .mainLogo{
+        margin-top: 50px;
+        height:241px;
+        width: 411px;
+    }
+    .title, .btmTitle{
+        font-size: 107px;
+    }
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------Search Results Screen Min Width 2560px;----------------------------------------*/
+    body{
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    .usdaApi{
+        font-size: 40px;
+    }
+
+    .resultsButton{
+        font-size: 40px;
+        width: 370px;
+    }
+/*----------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------Nutrition/Recipe Screen Min Width 25560px--------------------------------------*/
+    .nutritionTitle{
+        font-size: 56px;
+    }
+
+    .nutritionLi{
+        font-size: 50px;
+    }
+
+    .recBS{
+        font-size: 50px;
+    }
+
+    .recipeIdeasTitle{
+        font-size: 60px;
+    }
+
+    .reDoSearchButton{
+        height: 80px;
+        width: 326px;
+        font-size: 30px;
+    }
+
 }
 
