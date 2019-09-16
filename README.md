@@ -11,12 +11,13 @@
 
 ## Screen Shots and intructions
 
-![Alt Welcome](diabetes-dribbble.png)
-### Welcome Screen
->This is what the user will first when opening up their app.  All there is to do here is hit the start button to cofirm you wanted to open
-the application.
+![Alt Welcome](/imgs/Welcome.PNG)
 
-<img src="imgs\Welcome Thumbnail.PNG">
+### Welcome Screen
+>This is what the user will first when opening up their app.  All there is to do here is hit the start button to cofirm you wanted to open the application.
+
+![Alt Welcome](/imgs/Welcome.PNG)
+
 ### User data collection Screen
 >This is the second screen the user will see.  Here the user has to enter three inputs of informtion.  From top to bottom we can see the
 first required entry is the particular food item.<br>
