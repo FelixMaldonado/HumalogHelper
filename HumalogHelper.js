@@ -9,7 +9,7 @@ function initialize(){
     handleConfirmButtonClick()
     handleStartButtonClick()
     handleResultsButtonClick()
-    hanldeReDoSearchButtonClick()
+    handleReDoSearchButtonClick()
 }
 
 function handleStartButtonClick(){
@@ -24,9 +24,14 @@ function handleConfirmButtonClick(){
         event.preventDefault();
         food = 'q=' + $('.foodSearchInput').val();
         ratio = $('.ratioInput').val();
+        console.log(ratio);
         bloodSugar = $('.bloodSugarInput').val();
-
-        getUSDA(food);
+        if(isNaN(ratio)){
+            alert("Please enter whole numbers or decimals for your insulin ratio"), showMainUi();
+        }
+        else{
+            getUSDA(food);
+        }  
     })
 }
 
@@ -39,7 +44,7 @@ function handleResultsButtonClick(){
     })
 }
 
-function hanldeReDoSearchButtonClick(){
+function handleReDoSearchButtonClick(){
     $('body').on('click','.reDoSearchButton', event=>{
         showMainUi();
     })
@@ -61,13 +66,13 @@ function showMainUi(){
                                         </div>
                                         <div class="ratio">
                                             <img class="ratioImg" src="https://images.ctfassets.net/yixw23k2v6vo/62cF6PI0rSwc46UIUqisEW/88f4abbb4952387b151855e54e335dbb/iS-Your_Insulin-to-Carbohydrate_Ratio__What_s_Yours_-iStock-522854112.jpg?w=600&h=400&fm=jpg&fit=thumb&q=65&fl=progressive" alt="Insulin pen and Calculator">
-                                            <label class="inputLabels" for="carbRatio">Enter "X" value for insulin ratio ("X"/Total Carbs)</label>
-                                            <input class="ratioInput" type="float" id="carbRatio" placeholder='"X" divided by carbohydrates' required>
+                                            <label class="inputLabels" for="carbRatio">Enter units of insulin per total carbs</label>
+                                            <input class="ratioInput" type="float" id="carbRatio" placeholder='Ex: Ratio of 1:10 would enter 10' required>
                                         </div>
                                         <div class="bloodSugar">
                                             <img class="bloodSugarImg" src="https://cdn.dribbble.com/users/1131932/screenshots/2695717/diabetes-dribbble.png" alt="Blood drop logo">
                                             <label class="inputLabels" for="currentBS">Enter you current Blood Sugar</label>
-                                            <input class="bloodSugarInput" type="float" id="currentBS" placeholder="Current Blood Sugar">
+                                            <input class="bloodSugarInput" type="float" id="currentBS" placeholder="Current Blood Sugar" required>
                                             <div class="mainUiButtonContainer">
                                             <button class="mainUiButton" type="submit" value="ConfirmUserInput">Confirm User Input</button>
                                     </form>
@@ -87,13 +92,13 @@ function showMainUi(){
                                         </div>
                                         <div class="ratio">
                                             <img class="ratioImg" src="https://images.ctfassets.net/yixw23k2v6vo/62cF6PI0rSwc46UIUqisEW/88f4abbb4952387b151855e54e335dbb/iS-Your_Insulin-to-Carbohydrate_Ratio__What_s_Yours_-iStock-522854112.jpg?w=600&h=400&fm=jpg&fit=thumb&q=65&fl=progressive" alt="Insulin pen and Calculator">
-                                            <label class="inputLabels" for="carbRatio">Enter "X" value for insulin ratio ("X"/Total Carbs)</label>
-                                            <input class="ratioInput" type="float" id="carbRatio" placeholder='"X" divided by carbohydrates' value=${ratio} required>
+                                            <label class="inputLabels" for="carbRatio">Enter units of insulin per total carbs</label>
+                                            <input class="ratioInput" type="float" id="carbRatio" placeholder='Ex: Ratio of 1:10 would enter 10' value=${ratio} required>
                                         </div>
                                         <div class="bloodSugar">
                                             <img class="bloodSugarImg" src="https://cdn.dribbble.com/users/1131932/screenshots/2695717/diabetes-dribbble.png" alt="Blood drop logo">
                                             <label class="inputLabels" for="currentBS">Enter you current Blood Sugar</label>
-                                            <input class="bloodSugarInput" type="float" id="currentBS" placeholder="Current Blood Sugar" value=${bloodSugar}>
+                                            <input class="bloodSugarInput" type="float" id="currentBS" placeholder="Current Blood Sugar" value=${bloodSugar} required>
                                         <div class="mainUiButtonContainer">
                                         <button class="mainUiButton" type="submit" value="ConfirmUserInput">Confirm User Input</button>
                                     </form>
@@ -108,9 +113,32 @@ function showMainUi(){
 
 function getUSDA(food){
     fetch(`https://api.nal.usda.gov/ndb/search/?format=json&${food}&sort=n&max=10&offset=0&api_key=fHFBcIG1vOtd2UOXVcphXxiQuqNRlpeTl9s8YZ82`)
-    .then(response=>response.json())
-    .then(responseJson => displayResults(responseJson));
+    .then(response=>{
+            if(!response.ok){
+                throw Error(response.statusText);
+            }
+            return response.json();
+        })
+    .then(responseJson =>{
+            displayResults(responseJson);
+            }).catch(e =>{
+                alert("Invalid Search: Please change food search verbiage/UPC "), showMainUi();
+            });            
 }
+
+                            
+        
+        
+        
+// displayResults(responseJson)
+
+// try{
+//     let carbValue = newResponseJson.report.foods[0].nutrients[3].value;
+// }
+// catch(err){
+//     alert(`Something went wrong: ${err.message}.  Please try another search.`);
+//     showMainUi();
+// }
 
 
 function getResults(responseJson,food){
